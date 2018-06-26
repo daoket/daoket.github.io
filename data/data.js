@@ -1,4 +1,4 @@
 var data = {
-  "name"： "iwen",
+  "name": "iwen",
   "age": 18
 }
