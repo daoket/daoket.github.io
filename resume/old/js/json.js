@@ -62,7 +62,7 @@ var Json = {
         }
     ],
     myInfo:{
-        name:'牛文通',
+        name:'',
         slogan:'两年前端经验',
         edu:'本科 河南工程学院',
         time:'2年',
