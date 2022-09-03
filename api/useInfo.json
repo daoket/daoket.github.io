@@ -1,0 +1,9 @@
+{
+  "code": 0,
+  "message": "请求成功",
+  "data": {
+    "name": "iwen",
+    "age": 18,
+    "image": "https://daoket.gitee.io/res/pic.png"
+  }
+}
