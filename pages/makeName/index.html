@@ -32,6 +32,8 @@
     let names = []
     fetch('https://daoket.github.io/pages/makeName/Data/牛姓男孩名字大全.txt').then(res => res.text()).then((res) => {
       names = res.split('\n')
+      console.log(names);
+      console.log('%c ---------------------分割线---------------------', 'color:#00BBEE');
     })
     document.querySelector('.makeName').onclick = function () {
       const girl = girls[Math.floor(Math.random() * (girls.length + 1))];
