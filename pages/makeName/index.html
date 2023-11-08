@@ -51,7 +51,7 @@
   
       const timer = setTimeout(() => {
         chillName.innerHTML = '<span style="font-size: 16px;">响应超时，请链接 VPN 后重试！</span>'
-      }, 60000);
+      }, 50000);
       if (localStorage.getItem(fielName)) {
         clearTimeout(timer);
         names = localStorage.getItem(fielName).split('\n');
