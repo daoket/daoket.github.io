@@ -17,10 +17,10 @@
     .chillName{
       font-size: 88px;
       min-height: 123px;
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
     input{
-      width: 50px;
+      width: 60px;
     }
   </style>
 </head>
@@ -31,7 +31,7 @@
     <option value="女">女</option>
   </select>
   <label for="childFamily">宝宝姓氏</label>
-  <input id="childFamily" type="text" value="牛" placeholder="仅输入姓氏即可">
+  <input id="childFamily" type="text" value="牛" placeholder="仅姓氏即可">
   <a target="_blank" href="https://github.com/daoket/makeName/tree/master/Data">数据源</a>
   <div class="box">
     <div class="chillName"></div>
@@ -42,11 +42,11 @@
     if (localStorage.getItem('childSex')) childSex.value = localStorage.getItem('childSex')
     if (localStorage.getItem('childFamily')) childFamily.value = localStorage.getItem('childFamily')
     
+    let names = [];
     document.querySelector('.makeName').onclick = function () {
       const sex = childSex.value || '女';
       const family = childFamily.value || '牛';
       const fielName = `${family}姓${sex}孩名字大全.txt`;
-      let names = [];
 
       if (!familys.includes(family)) {
         alert('暂不支持该姓氏，或者输入有误！')
@@ -56,7 +56,9 @@
         names = localStorage.getItem(fielName).split('\n');
       } else {
         fetch(`https://daoket.github.io/pages/makeName/Data/${fielName}`).then(res => res.text()).then((res) => {
-          localStorage.setItem
+          console.log(res);
+          console.log('%c ---------------------分割线---------------------', 'color:#00BBEE');
+          localStorage.setItem(fielName, res)
           names = res.split('\n');
         })
       }
