@@ -48,11 +48,16 @@
         return;
       }
   
+      const timer = setTimeout(() => {
+        document.querySelector('.chillName').innerHTML = '<span style="font-size: 16px;">响应超时，请链接 VPN 后重试！</span>'
+      }, 30000);
       if (localStorage.getItem(fielName)) {
+        clearTimeout(timer);
         names = localStorage.getItem(fielName).split('\n');
       } else {
         names = [];
         fetch(`https://daoket.github.io/pages/makeName/Data/${fielName}`).then(res => res.text()).then((res) => {
+          clearTimeout(timer);
           if (res.includes(family)) {
             localStorage.setItem(fielName, res);
             names = res.split('\n');
@@ -66,7 +71,7 @@
       localStorage.setItem('childFamily', family);
       if (names.length === 0) {
         alert('初次加载可能较慢，请稍等一下。')
-        document.querySelector('.chillName').innerHTML = '<span style="font-size: 16px;">请稍等一下，数据正在加载中...</span>'
+        document.querySelector('.chillName').innerHTML = '<span style="font-size: 16px;">请稍等一下，数据正在加载中...</span>';
       } else {
         const name = names[Math.floor(Math.random() * (names.length + 1))];
         document.querySelector('.chillName').innerHTML = name
