@@ -67,6 +67,7 @@
         fetch(`https://daoket.github.io/pages/makeName/Data/${fielName}`).then(res => res.text()).then((res) => {
           localStorage.setItem(fielName, res)
           names = res.split('\n');
+          document.querySelector('.chillName').innerHTML = '<span style="font-size: 16px;">加载成功，请点击按钮试一下吧！</span>'
         })
       }
       if (names.length === 0) {
