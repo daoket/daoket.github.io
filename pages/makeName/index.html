@@ -36,6 +36,7 @@
     const familys = `艾,安,敖,巴,白,柏,班,包,鲍,暴,贝,贲,毕,边,卞,别,邴,卜,步,蔡,苍,曹,岑,曾,查,柴,昌,常,巢,车,陈,成,程,池,充,仇,储,褚,淳于,从,崔,逮,戴,单,单于,澹台,党,邓,狄,翟,刁,丁,东方,东,董,都,窦,堵,杜,段,鄂,樊,范,方,房,费,丰,封,酆,冯,凤,伏,扶,符,傅,富,甘,干,高,郜,戈,葛,耿,弓,公孙,公,公羊,公冶,宫,龚,巩,贡,古,谷,顾,关,管,广,桂,郭,国,韩,阚,杭,郝,何,和,贺,赫连,衡,弘,红,洪,侯,后,胡,扈,花,华,滑,怀,桓,宦,皇甫,黄,惠,霍,姬,嵇,吉,汲,籍,计,纪,季,蓟,暨,冀,家,贾,简,江,姜,蒋,焦,解,金,靳,荆,井,景,居,鞠,康,柯,空,孔,寇,蒯,匡,隗,夔,赖,蓝,郎,劳,乐,雷,冷,黎,李,历,利,郦,连,廉,梁,廖,林,蔺,凌,令狐,刘,柳,龙,隆,娄,卢,鲁,陆,禄,路,吕,栾,罗,骆,麻,马,满,毛,茅,梅,蒙,孟,糜,米,宓,苗,乜,闵,明,莫,缪,牧,慕容,慕,穆,那,能,倪,宁,牛,钮,农,欧,欧阳,潘,庞,逄,裴,彭,蓬,皮,平,蒲,濮,濮阳,浦,溥,戚,祁,齐,钱,强,乔,秦,邱,秋,裘,曲,屈,璩,瞿,全,权,阙,却,冉,饶,任,戎,荣,容,融,茹,阮,芮,桑,沙,山,上官,尚,韶,邵,申屠,申,莘,沈,慎,盛,师,施,石,时,史,寿,殳,舒,束,双,水,司空,司马,司徒,司,松,宋,苏,宿,孙,索,邰,太叔,谈,谭,汤,唐,陶,滕,田,通,童,钭,屠,万俟,万,汪,王,危,韦,卫,尉迟,蔚,魏,温,文,闻人,闻,翁,沃,乌,邬,巫,毋,吴,伍,武,郗,奚,习,习名字大全1.txt,席,夏侯,夏,咸,相,向,项,萧,谢,辛,邢,幸,熊,胥,须,徐离,徐,许,轩辕,宣,薛,荀,严,阎,颜,晏,燕,羊,阳,杨,仰,养,姚,叶,伊,易,羿,益,殷,尹,印,应,雍,尤,游,于,余,鱼,俞,虞,宇文,禹,庾,郁,喻,元,袁,越,云,宰,昝,臧,詹,湛,张,章,长孙,赵,甄,郑,支,终,钟,仲孙,仲,周,朱,诸葛,诸,竺,祝,庄,卓,訾,宗,宗政,邹,祖,左`.split(',');
     if (localStorage.getItem('childSex')) childSex.value = localStorage.getItem('childSex')
     if (localStorage.getItem('childFamily')) childFamily.value = localStorage.getItem('childFamily')
+    const chillName = document.querySelector('.chillName');
     
     let names = [];
     document.querySelector('.makeName').onclick = function () {
@@ -49,8 +50,8 @@
       }
   
       const timer = setTimeout(() => {
-        document.querySelector('.chillName').innerHTML = '<span style="font-size: 16px;">响应超时，请链接 VPN 后重试！</span>'
-      }, 30000);
+        chillName.innerHTML = '<span style="font-size: 16px;">响应超时，请链接 VPN 后重试！</span>'
+      }, 60000);
       if (localStorage.getItem(fielName)) {
         clearTimeout(timer);
         names = localStorage.getItem(fielName).split('\n');
@@ -61,9 +62,9 @@
           if (res.includes(family)) {
             localStorage.setItem(fielName, res);
             names = res.split('\n');
-            document.querySelector('.chillName').innerHTML = '<span style="font-size: 16px;">加载成功，请点击按钮试一下吧！</span>';
+            chillName.innerHTML = '<span style="font-size: 16px;">加载成功，请点击按钮试一下吧！</span>';
           } else {
-            document.querySelector('.chillName').innerHTML = `<span style="font-size: 16px;">出错了：${res}</span>`;
+            chillName.innerHTML = `<span style="font-size: 16px;">出错了：${res}</span>`;
           }
         })
       }
@@ -71,10 +72,10 @@
       localStorage.setItem('childFamily', family);
       if (names.length === 0) {
         alert('初次加载可能较慢，请稍等一下。')
-        document.querySelector('.chillName').innerHTML = '<span style="font-size: 16px;">请稍等一下，数据正在加载中...</span>';
+        chillName.innerHTML = '<span style="font-size: 16px;">请稍等一下，数据正在加载中...</span>';
       } else {
         const name = names[Math.floor(Math.random() * (names.length + 1))];
-        document.querySelector('.chillName').innerHTML = name
+        chillName.innerHTML = name
       }
     }
 
