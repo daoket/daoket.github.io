@@ -53,9 +53,13 @@
       } else {
         names = [];
         fetch(`https://daoket.github.io/pages/makeName/Data/${fielName}`).then(res => res.text()).then((res) => {
-          localStorage.setItem(fielName, res)
-          names = res.split('\n');
-          document.querySelector('.chillName').innerHTML = '<span style="font-size: 16px;">加载成功，请点击按钮试一下吧！</span>';
+          if (res.includes(family)) {
+            localStorage.setItem(fielName, res);
+            names = res.split('\n');
+            document.querySelector('.chillName').innerHTML = '<span style="font-size: 16px;">加载成功，请点击按钮试一下吧！</span>';
+          } else {
+            document.querySelector('.chillName').innerHTML = `<span style="font-size: 16px;">出错了：${res}</span>`;
+          }
         })
       }
       localStorage.setItem('childSex', sex);
