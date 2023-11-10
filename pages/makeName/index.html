@@ -14,7 +14,7 @@
       /* background-image: radial-gradient(135% 135% at 0% -34%, rgb(255, 116, 236) 0%, rgba(255, 116, 236, 0) 99%), linear-gradient(152deg, rgb(231, 96, 255) -43%, rgb(114, 91, 255) -5%, rgb(0, 127, 255) 59%, rgb(90, 239, 255) 130%); */
       background-clip: text;-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
     input{width: 60px;}.closed{float: right;font-size: 18px;margin-right: 20px;}
-    .speakName{position: absolute;top: 0;right: 50px;color: #1890ff;}
+    .speakName{position: absolute;top: 0;right: 40px;color: #1890ff;}
   </style>
 </head>
 <body>
@@ -78,6 +78,7 @@
       } else {
         const name = names[Math.floor(Math.random() * (names.length + 1))];
         chillName.innerHTML = name
+        speakName(name);
       }
     }
 
@@ -85,8 +86,12 @@
       config.style.display = 'none';
     }
     document.querySelector('.speakName').onclick = () => {
-      const utterance = new SpeechSynthesisUtterance(chillName.innerHTML);
+      speakName(chillName.innerHTML);
+    }
+    function speakName(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
       speechSynthesis.speak(utterance);
+      
     }
   </script>
 </body>
